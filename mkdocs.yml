@@ -1,0 +1,19 @@
+site_name: Мой статический сайт
+site_description: Сайт созданный для задания
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+
+nav:
+  - Главная: index.md
+  - О проекте: about.md
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - admonition
+  - codehilite
