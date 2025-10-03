@@ -1,0 +1,21 @@
+{
+  "name": "my-static-site",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "postcss:css": "postcss docs/assets/styles.css -o docs/assets/styles.css",
+    "validate:html": "html-validate \"site/**/*.html\"",
+    "minify:html": "bash -lc \"shopt -s globstar nullglob; for f in site/**/*.html; do html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-style-link-type-attributes --minify-css true --minify-js true -o \"$f.tmp\" \"$f\" && mv \"$f.tmp\" \"$f\"; done\"",
+    "build:mkdocs": "mkdocs build --strict",
+    "build": "npm run postcss:css && npm run build:mkdocs && npm run validate:html && npm run minify:html"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.20",
+    "cssnano": "^7.0.6",
+    "html-minifier-terser": "^7.2.0",
+    "html-validate": "^8.18.2",
+    "postcss": "^8.4.47",
+    "postcss-cli": "^11.0.0"
+  }
+}
+

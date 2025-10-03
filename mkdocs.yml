@@ -1,12 +1,10 @@
 site_name: Мой статический сайт
-site_description: Сайт созданный для задания
+site_description: Сайт, созданный для задания
+site_author: Данил
 
 theme:
-  name: material
-  features:
-    - navigation.tabs
-    - navigation.sections
-    - toc.integrate
+  name: null
+  custom_dir: theme
 
 nav:
   - Главная: index.md
