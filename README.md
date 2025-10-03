@@ -1,21 +1,18 @@
 ## Минимальная кастомная тема MkDocs + GitHub Pages
 
-- **Тема**: `theme/main.html` (header, footer, навигация, стилизация главной)
-- **Ассеты**: `docs/assets/styles.css`, `docs/assets/app.js`
-- **Метаданные**: в `mkdocs.yml` (`site_name`, `site_description`, `site_author`)
-- **PostCSS**: `postcss.config.cjs` (autoprefixер, cssnano)
-- **Валидация HTML**: `.htmlvalidate.json`
-- **Минификация HTML**: `html-minifier-terser`
-- **CI/CD**: `.github/workflows/deploy.yml` — сборка и деплой на Pages
+Ниже — отчёт по выполненному заданию: создана собственная тема (Jinja2), настроена сборка фронтенда (PostCSS), добавлена валидация и минификация HTML и автоматический деплой на GitHub Pages.
 
-### Локально
-```bash
-pip install mkdocs mkdocs-material
-npm install
-npm run build
-mkdocs serve
-```
+### Что реализовано
+- **Пользовательская тема**: `theme/main.html`
+  - Кастомные `header`/`footer` и навигация на основе `nav`.
+  - Стилизованный hero для главной страницы через `page.is_homepage`.
+  - Подключение ассетов через `{{ 'assets/...' | url }}`.
+- **Ассеты**: `docs/assets/styles.css`, `docs/assets/app.js` (минимальные стили и JS).
+- **Метаданные**: в `<head>` выводятся `site_description` и `site_author` из `mkdocs.yml`.
+- **Конфигурация MkDocs**: `mkdocs.yml` переведён на `theme: { name: null, custom_dir: theme }`, добавлены `site_name`, `site_description`, `site_author`, `nav`.
+- **PostCSS**: `postcss.config.cjs` с `autoprefixer` и `cssnano` для префиксов и минификации CSS.
+- **Валидация HTML**: `.htmlvalidate.json` (рекомендованные правила; `valid-id` выключен из‑за автогенерируемых якорей от MkDocs).
+- **Минификация HTML**: `html-minifier-terser`, запускается через Node‑скрипт `scripts/minify-html.js`.
+- **CI/CD**: `.github/workflows/deploy.yml` — сборка (Node+Python), валидация, минификация, деплой на Pages.
 
-### GitHub Pages
-- В Settings → Pages выберите Deployment: GitHub Actions.
-- Пушьте в ветку `main`; после Actions сайт будет доступен по ссылке Pages.
+
