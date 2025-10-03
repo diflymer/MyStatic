@@ -5,7 +5,7 @@
   "scripts": {
     "postcss:css": "postcss docs/assets/styles.css -o docs/assets/styles.css",
     "validate:html": "html-validate \"site/**/*.html\"",
-    "minify:html": "bash -lc \"shopt -s globstar nullglob; for f in site/**/*.html; do html-minifier-terser --collapse-whitespace --remove-comments --remove-optional-tags --remove-redundant-attributes --remove-script-type-attributes --remove-style-link-type-attributes --minify-css true --minify-js true -o \"$f.tmp\" \"$f\" && mv \"$f.tmp\" \"$f\"; done\"",
+    "minify:html": "node scripts/minify-html.js",
     "build:mkdocs": "mkdocs build --strict",
     "build": "npm run postcss:css && npm run build:mkdocs && npm run validate:html && npm run minify:html"
   },
