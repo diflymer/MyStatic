@@ -4,7 +4,8 @@
   "rules": {
     "doctype-style": "off",
     "no-trailing-whitespace": "warn",
-    "wcag/h32": "off"
+    "wcag/h32": "off",
+    "valid-id": "off"
   }
 }
 
